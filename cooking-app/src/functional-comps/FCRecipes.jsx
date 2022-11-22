@@ -13,7 +13,9 @@ export default function FCRecipes(props) {
             imageURL={recipe.imageURL}
             cookingMethod={recipe.cookingMethod}
             key={recipe.id}
-            sendIdtoPrepareFromRecipe={getIdFromRecipe}
+            sendIdToPrepareFromRecipe={getIdFromRecipe}
+            sendIdToEatFromRecipe={() => {}}
+            isReady={recipe.isReady}
         />
     ));
 

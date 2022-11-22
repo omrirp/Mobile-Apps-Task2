@@ -9,7 +9,7 @@ export default class CCRecipe extends Component {
             ingredients: this.props.ingredients,
             imageURL: this.props.imageURL,
             cookingMethod: this.props.cookingMethod,
-            isReady: false,
+            isReady: this.props.isReady,
         };
     }
 
@@ -31,12 +31,21 @@ export default class CCRecipe extends Component {
         }
 
         return (
-            <div className="item">
-                <img src={this.props.imageURL} alt="" />
+            <div className='item'>
+                <img src={this.props.imageURL} alt='' />
                 <h4>{this.props.name}</h4>
                 <h4>{ingredientsSTR}</h4>
                 <p>{this.props.cookingMethod}</p>
-                <button onClick={() => this.props.sendIdtoPrepareFromRecipe(this.state.id)}>{isReadyStr}</button>
+                <button
+                    onClick={() => {
+                        if (!this.state.isReady) {
+                            this.props.sendIdToPrepareFromRecipe(this.state.id);
+                        }
+                        this.props.sendIdToEatFromRecipe(this.state.id);
+                    }}
+                >
+                    {isReadyStr}
+                </button>
             </div>
         );
     }
